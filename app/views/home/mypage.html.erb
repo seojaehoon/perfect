@@ -1,0 +1,320 @@
+<html>
+    
+    
+    
+      <!--@post = Post.find-->
+<head>
+ 
+ 
+ <meta charset="utf-8">  
+    <meta http-equiv="content-type" content="text/html; charset=euc-kr" />
+    
+    <div style="text-align:center">  <!--가운데 배치 하는-->
+        <h1 id= mypage_title>마이 페이지</h1></br></br>
+        <h1 id=jj> <%= current_user.email %> 님 환영합니다. 자신의 건강 정보를 입력해주세요</br></br></h1>
+        <!--bodies.first.k-->
+        
+    </div>
+</head>
+  
+ <body style="background-image:url('https://www.cmesolutions.com/images/background.jpg');">
+  
+        <form action="/home/update" id=a_list method="post" enctype="multipart/form-data">
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+         
+           
+           <input type="hidden" name= "user_id" value="<%= current_user.id %>" >
+           <p><a type="submit" href="/" class="btn btn-primary">돌아가기</a></p>
+           <h3>키 &emsp;&nbsp;( 0cm ~ 300cm )</h3> 
+           <input type="number" name="height" min="0" max="300"></br></br>
+           
+           <h3>몸무게 ( 0kg ~ 300kg )</h3>
+               <input type="number" name="weight" min="0" max="300"></br></br>
+           
+           <h3>이름</h3>
+               <input type="text" name="user_name" ></br></br>
+         
+          <h3>나이</h3>
+              <input type="number" name="user_age" min="0"></br></br>
+             
+           <h3>성별</h3>
+          <select name="sex">
+             <option value="0">여성</option>
+             <option value="1">남성</option>
+          </select></br></br>
+         
+         
+         
+         <h3>복용 중인 약 이름</h3>
+         <input type="text" name="me_name"> 
+         <select name="me_h">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+         </select>
+         <h6>시</h6>
+ 
+        
+         <select name="me_m">
+            <option value="0">0</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="40">40</option>
+            <option value="50">50</option>
+         </select>
+        <h6>분</h6>
+         </br></br>
+         
+        <form>
+         <h3>디스크</h3>
+         <select name="a1">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+         
+         <h3>치질</h3>
+         <select name="a2">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+         
+         <h3>간 질환</h3>
+         <select name="a3">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+        
+         <h3>이빨, 잇몸 질환</h3>
+         <select name="a4">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+        </select></br></br>
+        
+         <h3>빈혈</h3>
+         <select name="a5">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+         
+         <h3>만성근육통</h3>
+         <select name="a6">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+         
+         <h3>과민성 대장 증후군</h3>
+         <select name="a7">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+        
+         <h3>소장암</h3>
+         <select name="a8">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+        </select></br></br>
+        
+         <h3>고혈압</h3>
+         <select name="a9">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+         
+         <h3>고지혈증</h3>
+         <select name="a10">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+         
+         <h3>백혈병</h3>
+         <select name="a11">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+        
+         <h3>위암</h3>
+         <select name="a12">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+        </select></br></br>
+        
+        <h3>간암</h3>
+         <select name="a13">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+         
+         <h3>대장암</h3>
+         <select name="a14">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+         
+         <h3>유방암</h3>
+         <select name="a15">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+        
+         <h3>자궁경부암</h3>
+         <select name="a16">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+        </select></br></br>
+        
+        <h3>폐암</h3>
+         <select name="a17">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+         
+         <h3>갑상선암</h3>
+         <select name="a18">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+         
+         <h3>뼈(골절)</h3>
+         <select name="a19">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+        
+         <h3>피부(알러지)</h3>
+         <select name="a20">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+        </select></br></br>
+        
+        <h3>피부(아토피)</h3>
+         <select name="a21">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+         
+         <h3>심장질환</h3>
+         <select name="a22">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+         
+         <h3>목(식도,성대)</h3>
+         <select name="a23">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+        
+         <h3>폐 질환</h3>
+         <select name="a24">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+        </select></br></br>
+        
+        <h3>저혈압</h3>
+         <select name="a25">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+         
+         <h3>골다공증</h3>
+         <select name="a26">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+         
+         <h3>장염</h3>
+         <select name="a27">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+        
+         <h3>뇌졸증</h3>
+         <select name="a28">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+        </select></br></br>
+        
+         <h3>천식</h3>
+         <select name="a29">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+         
+         <h3>알레르기성 비염</h3>
+         <select name="a30">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+         
+         <h3>안구건조증</h3>
+         <select name="a31">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+        
+         <h3>중이염</h3>
+         <select name="a32">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+        </select></br></br>
+        
+         <h3>이석증</h3>
+         <select name="a33">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+         
+         <h3>각막염</h3>
+         <select name="a34">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+         
+         <h3>녹내장</h3>
+         <select name="a35">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+         </select></br></br>
+        
+         <h3>백내장</h3>
+         <select name="a36">
+             <option value="0">없음</option>
+             <option value="1">있음</option>
+        </select></br></br>
+        
+         <h3>당뇨</h3>
+         <select name="a37">
+             <option value="0">없음</option>
+             <option value="1">있음</option>s
+         </select>
+ 
+            </br></br></br> 
+            <input type="submit" value="저장" style="height:100px; width:720px;font-size:50px;">
+         
+         </form></br></br> </br></br> </br></br> </br></br> 
+
+ </form>
+</html>

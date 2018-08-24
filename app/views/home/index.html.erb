@@ -1,0 +1,374 @@
+  
+   <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav" >
+     <a class="navbar-brand js-scroll-trigger" href="#page-top">
+        <span class="d-block d-lg-none" style="font-family:Hanna;">HARU DOCTOR</span>
+        <span class="d-none d-lg-block">
+          <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="/img\doctor.jpg" style="width:128px;height:128px;" alt="">
+        </span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+      <% if user_signed_in? %>
+      <li class="nav-item">
+          <a class="button" href="/users/sign_out">logout</a>
+          </li>
+      <% else %>
+        <li class="nav-item">
+          <a class="button" href="users/sign_in">login</a>
+          </li>
+          <br> 
+        <% end %>
+        <% if user_signed_in? %>
+        <% else %>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">하루닥터</a>
+          </li>
+          <% end %>
+          <% if user_signed_in? %>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#experience">하루</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#education" >건강</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#skills">일일건강뉴스</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/home/mypage">마이페이지</a></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/home/inbody">게시판</a></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/home/inbody">Q&A</a></a>
+          </li>
+          <% else %>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+    <div class="container-fluid p-0">
+      <section class="resume-section p-3 p-lg-5 d-flex d-column" id="about">
+        <div class="my-auto">
+         <% if user_signed_in? %>
+         <% else %>
+          <h2 class="mb-0" >하루닥터
+          </h2>
+          <div class="subheading mb-5" style=" font-size:1em">하루닥터는 당신의 건강을 위해 매일 최신의 정보들을 제공하는 웹 서비스입니다
+          </div>
+          <a >아직 로그인을 하지않으셨네요.</a><br>
+          <a >로그인하여 당신을 위한 최적의 정보를 받아보세요</a>
+          </div>
+      </section>
+      <% end %>
+      <% if user_signed_in? %>
+     <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="experience">
+        <div class="my-auto" >
+          <h2 class="mb-5">하루</h2></br>
+           <% if current_user.nickname.present? %>
+          현재 <a><%= current_user.nickname %></a> 님 접속중.
+          <% else %>
+            <p>닉네임 정보를 업데이트 해주세요!</p>
+            <p><a type=submit href="/users/edit" class="btn btn-default">프로필수정</a></p>
+          <% end %>
+          <div>
+            <div class="resume-content mr-auto">
+              <h3 class="mb-0">Doctors Say</h3>
+                <% if current_user.mypages.present? %>
+               <% if current_user.mypages.last.a1 == 1 %>
+               <p>소장암에는 수수, 살구, 풋고추, 더덕, 도라지, 짜장, 커피, 녹차, 홍차, 쑥차, 초콜릿 등을 충분히 드시고 과식, 스트레스, 심한 운동을 피하셔야 합니다.</p>
+               <% end %>
+               <% if current_user.mypages.last.a2 == 1 %>
+               <p>치질에는 붉은 팥, 검은깨, 돼지곱창, 양곱창, 호두, 죽순, 꿀 등을 충분히 섭취하시고 매운음식, 고지방, 고단백, 딱딱한 음식, 골프, 유도 등 하체에 힘을 주는 운동을 피하셔야 합니다.</p>
+               <% end %>
+               <% if current_user.mypages.last.a3 == 1 %>
+               <p>간질환에는 비타민, 생선, 두부, 달걀, 우유, 잡곡, 부추, 미나리, 시금치, 표고버섯, 미역 등을 충분히 섭취하시고 산책, 조깅, 수영, 자전거를 추천하고 근육 트레이닝, 장거리 달리기를 피하셔야 합니다.</p>
+               <% end %>
+               <% if current_user.mypages.last.a4 == 1 %>
+               <p>이빨,잇몸질환에는 녹차, 양파, 캐슈넛, 우유, 치즈, 사과, 바나나, 건포도 등을 충분히 드시고 하루 3번 꾸준하고 올바른 양치질을 하셔여 합니다. 젤리, 카라멜, 초콜릿 등의 달고 끈적이는 것들, 탄산음료와 먹고 바로 자기 등을 피하셔야 합니다..</p>
+               <% end %>
+               <% if current_user.mypages.last.a5 == 1 %>
+               <p>빈혈에는 토마토, 시금치, 체리, 미역, 달걀, 살코기 등을 충분히 섭취하시고 산책, 자전거타기, 수영, 등산을 권장합니다. 커피, 홍차, 녹차, 현미, 심한 운동을 피하셔야 합니다.</p>
+               <% end %>
+               <% if current_user.mypages.last.a6 == 1 %>
+               <p>근육통에는 연어, 견과류, 고단백 등의 음식을 많이 섭취하시고 꾸준한 스트레칭을 권장합니다. 인공감미료, 설탕, 카페인, 탄산음료, 심한 운동을 피하세요.</p>
+               <% end %>
+               <% if current_user.mypages.last.a7 == 1 %>
+               <p>과민성 대장 증후군에는 규직적인 식사와 충분한 수분섭취, 유산소 운동을 권장합니다. 차와 커피는 하루 3잔 이하로 마시는게 좋습니다.</p>
+               <% end %><% if current_user.mypages.last.a2 == 1 %>
+               <p>디스크에는 두부, 멸치, 버섯, 우유를 식단에 추가하고 조깅같은 가벼운 운동을 하시는게 도움이 됩니다.</p>
+               <% end %>
+               <% if current_user.mypages.last.a8 == 1 %>
+               <p>고혈압에는 항상 싱겁게 먹는 습관, 정상 체중 유지를 하시고 과당분, 고염분, 심한 운동을 피하세요. </p>
+               <% end %>
+               <% if current_user.mypages.last.a9 == 1 %>
+               <p>고지혈증에는 지방량을 줄이는 식단으로 바꾸시고 적정한 체중 유지를 권장합니다. 라면, 과자, 인스턴트 음식, 심한 운동을 피하셔야합니다. 정상 체중 유지와 적절한 근력운동이 도움이 됩니다.</p>
+               <% end %>
+               <% if current_user.mypages.last.a10 == 1 %>
+               <p>백혈병에는 저희 하루닥터는 ALS 협회를 지지합니다. 모든 비타민을 함유한 고른 영양 식단과 포기하지 않는것이 가장 중요합니다.</p>
+               <% end %>
+               <% if current_user.mypages.last.a11 == 1 %>
+               <p>위암에는 브로콜리, 당근, 마늘, 김치, 미나리 등을 충분히 섭취하시고 밀가루 음식, 기름에 튀긴 것, 시금치 등을 피하셔야 합니다.  저희 하루닥터는 국립암센터를 지지합니다.</p>
+               <% end %>
+               <% if current_user.mypages.last.a12 == 1 %>
+               <p>간암에는 카레, 매실, 호박,검정콩, 목이버섯, 쑥, 다시마, 호두 등을 충분히 섭취하시고 음주는 자살행위 입니다. 저희 하루닥터는 국립암센터를 지지합니다.</p>
+               <% end %>
+               <% if current_user.mypages.last.a13 == 1 %>
+               <p>대장암에는 표고버섯, 생강, 유산균, 싱겁고 영양이 골고루 들어있는 식단 위주로 규칙적인 식사, 채소, 과일, 충분한 수분 섭취를 하시고 장에 자극을 주는 찬 음식, 인스턴트, 가공식품은 피하셔야 합니다. 저희 하루닥터는 국립암센터를 지지합니다.</p>
+               <% end %>
+               <% if current_user.mypages.last.a14 == 1 %>
+               <p>유방암에는 양배추, 검은콩, 고구마, 당근, 호박 등 황색 식품, 발효음식, 미역, 다시마, 신선한 과일을 충분히 섭취하시고 많은 양의 설탕, 밀가루가 들어있는 음식, 고카페인, 가공육류를 피하셔야합니다. 저희 하루닥터는 국립암센터를 지지합니다.</p>
+               <% end %>
+               <% if current_user.mypages.last.a15 == 1 %>
+               <p>자궁경부암에는 미역, 포도주, 귤, 양배추, 영양분을 골고루 섭취하시고 금연, 금주, 건전한 성생활을 권장합니다. 저희 하루닥터는 국립암센터를 지지합니다.</p>
+               <% end %>
+               <% if current_user.mypages.last.a16 == 1 %>
+               <p>폐암에는 당근, 시금치, 고구마, 율무, 땅콩 등 호흡기에 좋은 음식들을 자주 섭취하고 적은 양을 먹되, 자주 드시는걸 권장합니다. 담배는 자살행위 입니다. 저희 하루닥터는 국립암센터를 지지합니다.</p>
+               <% end %>
+               <% if current_user.mypages.last.a17 == 1 %>
+               <p>갑상선암에는 해조류, 복숭아, 토마토, 캐슈넛, 적당한 육류 등을 충분히 섭취하시고 인스턴트, 글루텐 등을 피하셔야 합니다. 저희 하루닥터는 국립암센터를 지지합니다.</p>
+               <% end %>
+               <% if current_user.mypages.last.a18 == 1 %>
+               <p>(뼈)골절에는 달걀 시금치 정어리 어류 멸치 과일 당근 두유 양파 치즈 요거트 두부 가시오가피뿌리 우유 새우 곡물 등을 드시고 커피 설탕 인스턴튼 탄산음료 등 운동은 피하시고 푹 쉬는게 좋습니다</p>
+               <% end %>
+               <% if current_user.mypages.last.a19 == 1 %>
+               <p>피부(알러지)에는 호박 시금치 쑥갓 양배추 케일 신선초 셀러리 파세리 깻잎 상추 우엉 무우순 당근 감자 마 마늘 양파 등을 드시고 색소함유음식 튀김류 버터 초콜릿 땅콩 등 운동은 피하시길 바랍니다</p>
+               <% end %>
+               <% if current_user.mypages.last.a20 == 1 %>
+               <p>피부(아토피)에는 호박 시금치 쑥갓 양배추 신선초 깻잎 상추 배추 당근 감자 등을 드시고  밀가루 견과류 우유 튀김 과자 등을 피하시길 바랍니다</p>
+               <% end %>
+               <% if current_user.mypages.last.a21 == 1 %>
+               <p>심장질환에는 과일 녹색채소 오트 올리브오일 레드와인 생선 견과류를 드시고 가공육 케익 과자 패스트푸드 등을 피하시길 바랍니다</p>
+               <% end %>
+               <% if current_user.mypages.last.a22 == 1 %>
+               <p>목관련에는 대추 생강 매실 무 를 드시고 술 담배 카페인 녹차 홍차 등 목관련 운동을 피하시길 바랍니다</p>
+               <% end %>
+               <% if current_user.mypages.last.a23 == 1 %>
+               <p>폐관련에는 도라지 복숭아 토마토 녹차 등을 드시고 운동은 피하시길 바랍니다</p>
+               <% end %>
+               <% if current_user.mypages.last.a24 == 1 %>
+               <p>저혈압에는 물 초콜렛 이온음료 치즈 커피 차 감초 견과류 로즈마리 비타민c 고기 등을 드시고 토마토 가지 배수박 바나나 메밀 율무 다시마 등을 피하시며 과격한 운동은 피하시길 바랍니다</p>
+               <% end %>
+               <% if current_user.mypages.last.a25 == 1 %>
+               <p>골다골증에는 저지방 우유 푸른생선 해조류 콩 두부 들깨 신선한 야채 등을 드시고 짠 음식 탄산음료 커피 과다한 양의 단백질을 피하시길 바랍니다</p>
+               <% end %>
+               <% if current_user.mypages.last.a26 == 1 %>
+               <p>장염에는 양배추 바나나 매실 된장 두부 등을 드시고 기름진 음식 및 소화하기 어려운 음식은 피하시길 바랍니다</p>
+               <% end %>
+               <% if current_user.mypages.last.a27 == 1 %>
+               <p>뇌졸중에는 잡곡밥,콩,생강,두부,꽁치,부추,미역,다시마,카레 등을 충분히 드시고 계란 노른자, 카페인음료를 피하셔야합니다. 유산소운동을 하되 새벽운동은 피하시는게 좋습니다.</p>
+               <% end %>
+               <% if current_user.mypages.last.a28 == 1 %>
+               <p>천식에는 아보카도, 브로콜리, 바나나, 생강,배를 식단에 추가하시고, 아이스크림,생선,우유를 피하세요. 수영,조깅을 추천하지만 황사때의 운동은 피하셔야합니다.</p>
+               <% end %>
+               <% if current_user.mypages.last.a29 == 1 %>
+               <p>알레르기성 비염에는 생강,대추,호박,시금치,양상추,브로콜리,풋고추,깻잎을 자주 드시고, 수박,참외,상추,오이,토마토는 피하세요. 걷기, 달리기, 자전거타기가 도움이 되지만 추운환경에서 땀을 흘리는 운동은 피하셔야합니다.</p>
+               <% end %>
+               <% if current_user.mypages.last.a30 == 1 %>
+               <p>안구건조증에는 당근,치즈,블루베리,연어,달걀노른자,바나나,시금치, 등푸른 생선을 자주드세요. 콧물약, 커피,지방이 많은 육류 음식은 피하시는게 좋습니다.눈동자를 상하좌우로 약 3초가량 움직인 뒤 시계방향으로 굴려주는 운동이 도움이 됩니다. 눕거나 엎드리는 자세는 피하세요.</p>
+               <% end %>
+               <% if current_user.mypages.last.a31 == 1 %>
+               <p>중이염에는 김치,강황,생강,마늘,연어,정어리,참치,고등어를 식단에 추가하세요. 우유,설탕은 피하시는게 좋습니다. 수영,간접흡연, 귀지파기, 과도한 코풀기는 자제하세요.</p>
+               <% end %>
+               <% if current_user.mypages.last.a32 == 1 %>
+               <p>이석증에는 검은콩,참깨,마늘,양파,당근,무,솔잎,구기자가 좋습니다. 튀김,카페인,커피,콜라,사이다는 피하세요. 에플리 치료법, 시몽치료법을 활용하세요. 지나친 다이어트와 스트레스는 이석증에 독입니다.</p>
+               <% end %>
+               <% if current_user.mypages.last.a33 == 1 %>
+               <p>각막염에는 검은콩,블루베리,홍삼,결명자를 자주 섭취하세요. 유제품,감자튀김,베이컨,과도한 음주는 피하세요. 서클렌즈, 컬러렌즈는 끼지 않는게 좋습니다.</p>
+               <% end %>
+               <% if current_user.mypages.last.a34 == 1 %>
+               <p>녹내장에는 딸기,블루베리,감자,시금치,당근,토마토,호박을 드시면 도움이 됩니다. 쇠고기, 카페인, 감자, 흰쌀, 빵은 피하시는게 좋습니다. 선글라스로 자외선을 차단하시고, 오랫동안 근거리를 집중해서 보는 행동은 피하세요.</p>
+               <% end %>
+               <% if current_user.mypages.last.a35 == 1 %>
+               <p>백내장에는 브로콜리,시금치,감귤,딸기,키위,시금치,브로콜리,양배추를 섭취하는 것이 좋습니다. 화학보존제가 첨가된 음식, 사탕을 피하세요. 선글라스로 자외선을 차단하시고 스마트폰 오래 쳐다보기는 피하세요.</p>
+               <% end %>
+               <% if current_user.mypages.last.a37 == 1 %>
+               <p>당뇨에는 통곡물, 연두부, 콩나물국이 좋습니다. 체중을 줄이기 위해 칼로리 제한이 필요합니다. 지방을 적게 먹는 것이 좋습니다.</p>
+               <% end %>
+               <% end %>
+            <div class="resume-date text-md-right">
+            </div>
+          </div>
+          
+          <div class="resume-item d-flex flex-column flex-md-row mb-5" style="text-align:left">
+            <div class="resume-content mr-auto">
+              <h3 class="mb-0">오늘의 날씨 </br>서울 
+                  <img src="http://openweathermap.org/img/w/<%= @weather_seoul["weather"][0]["icon"] %>.png" height="100" width="100">
+               <p1><%= @weather_seoul["main"]["temp"] %>도 </p1> <!--온도--> 
+               
+               </br>광주 
+                  <img src="http://openweathermap.org/img/w/<%= @weather_g["weather"][0]["icon"] %>.png" height="100" width="100">
+               <p1><%= @weather_g["main"]["temp"] %>도 </p1> <!--온도--> 
+               
+               </br>부산 
+                  <img src="http://openweathermap.org/img/w/<%= @weather_b["weather"][0]["icon"] %>.png" height="100" width="100">
+               <p1><%= @weather_b["main"]["temp"] %>도 </p1> <!--온도--> 
+               
+               </br>울산
+                  <img src="http://openweathermap.org/img/w/<%= @weather_w["weather"][0]["icon"] %>.png" height="100" width="100">
+               <p1><%= @weather_w["main"]["temp"] %>도 </p1> <!--온도--> 
+               
+               </br>대전
+                  <img src="http://openweathermap.org/img/w/<%= @weather_dg["weather"][0]["icon"] %>.png" height="100" width="100">
+               <p1><%= @weather_dg["main"]["temp"] %>도 </p1> <!--온도--> 
+               
+               </br>대구 
+                  <img src="http://openweathermap.org/img/w/<%= @weather_dj["weather"][0]["icon"] %>.png" height="100" width="100">
+               <p1><%= @weather_dj["main"]["temp"] %>도 </p1> <!--온도--> 
+               
+               </br>인천
+                  <img src="http://openweathermap.org/img/w/<%= @weather_in["weather"][0]["icon"] %>.png" height="100" width="100">
+               <p1><%= @weather_in["main"]["temp"] %>도 </p1> <!--온도--> 
+               
+                      
+               </br>익산
+                  <img src="http://openweathermap.org/img/w/<%= @weather_iksan["weather"][0]["icon"] %>.png" height="100" width="100">
+               <p1><%= @weather_iksan["main"]["temp"] %>도 </p1> <!--온도--> 
+               
+               
+               </h3>
+            <div class="resume-date text-md-right">
+            </div>
+          </div>
+ 
+          <div class="resume-item d-flex flex-column flex-md-row mb-5">
+            <div class="resume-content mr-auto"  >
+              <h3 class="mb-0" >약복용까지 남은시간 &nbsp;&nbsp;<span id="clock"></span> 입니다<br/></h3>
+         
+        <h3>  지정해둔 시간  <%= current_user.mypages.first.me_h %>시  <%= current_user.mypages.first.me_m %>분 입니다 </h3> </br>   
+            <div class="resume-date text-md-left">
+            </div>
+          </div>
+        </div>
+    
+      </section>
+
+      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
+        <div class="my-auto">
+          <h2 class="mb-5">건강</h2></br></br>
+          <div class="resume-item d-flex flex-column flex-md-row mb-5">
+            <div class="resume-content mr-auto">
+              <h3 class="mb-0">추천식단</h3><br>
+              <a>매일 오전6시에 업데이트됩니다.</a>
+             <body>
+              <table style="width:100%">
+             
+              
+            </table>
+            </body>
+          </div>
+          <div class="resume-item d-flex flex-column flex-md-row">
+            <div class="resume-content mr-auto">
+              <h3 class="mb-0">도전음식</h3><br>
+              <a >매일 오전6시에 업데이트됩니다.</a>
+            </div>
+            <div class="resume-date text-md-right">
+            </div>
+          </div>
+          <!-- d -->
+        </div>
+      </section>
+
+      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="skills">
+        <div class="my-auto">
+          <h2 class="mb-5">일일뉴스</h2><br>
+           <a href="https://post.naver.com/viewer/postView.nhn?volumeNo=16496324&memberNo=1891127&mainMenu=HEALTH" >‘위장 건강’에 이로운 식품들은?</a><br>
+           <img src="https://t1.daumcdn.net/thumb/R1280x0/?fname=http://t1.daumcdn.net/brunch/service/user/2uVW/image/wHAdE4ES5-jD4gGFeideHGwHGsE.jpg" style="width:128px;height:128px;" alt=""><br>
+           <a href="https://post.naver.com/viewer/postView.nhn?volumeNo=16471242&memberNo=5266975&mainMenu=HEALTH" >‘저혈압’을 관리하지 않고 방치하면 어떤 질환에 노출되나요?</a><br>
+           <img src="http://imgnews.naver.com/image/busan/2008/10/31/102431aoi0.jpg" style="width:128px;height:128px;" alt=""><br>
+           <a href="https://post.naver.com/viewer/postView.nhn?volumeNo=16514009&memberNo=11219042&mainMenu=HEALTH" >관절노화를 늦추는 생활습관과 운동</a><br>
+           <img src="https://post-phinf.pstatic.net/MjAxODA4MTZfMjQw/MDAxNTM0NDAwMTEzNDg2.ciMoiVKks737TGY9fsmICDZh5Sigu32LdTq8OEcQrLMg.GvhtqpWtCuZ7t84PdoQfXfZg3KDqgD8KrddJcWcS1aIg.JPEG/01-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EC%9A%A9.jpg?type=w1200" style="width:128px;height:128px;" alt=""><br>
+           <a href="http://www.msn.com/ko-kr/news/living/%EC%A0%80%ED%83%84%EC%88%98%ED%99%94%EB%AC%BC-%EC%8B%9D%EC%9D%B4%EA%B0%80-%EC%82%AC%EB%A7%9D-%EC%9C%84%ED%97%98%EC%9D%84-%EB%B6%80%EB%A5%B8%EB%8B%A4/ar-BBMcV6F?li=AA51XJ&ocid=ientp" >저탄수화물 식이가 사망 위험 부른다?</a><br>
+           <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BBMd7kj.img?h=338&w=530&m=6&q=60&o=f&l=f" style="width:128px;height:128px;" alt=""><br>
+           <a href="http://www.segye.com/newsView/20180821006307?OutUrl=ms" >앉았다 일어날 때 갑자기 머리 ‘핑~’...왜 그런걸까?</a><br>
+           <img src="http://www.segye.com/content/image/2018/08/21/20180821005670_0.jpg" style="width:128px;height:128px;" alt=""><br>
+           <a href="http://www.msn.com/ko-kr/news/living/%ec%b2%9c%ec%97%b0-%ec%84%b1%eb%b6%84%ec%9d%80-%e7%84%a1%e5%ae%b3%ed%95%98%eb%8b%a4-%eb%8f%85%ec%84%b1%c2%b7%ec%95%8c%eb%a0%88%eb%a5%b4%ea%b8%b0-%ec%a1%b0%ec%8b%ac%ed%95%b4%ec%95%bc/ar-BBMbR1P?li=AA51XJ&ocid=ientp" >천연 성분은 無害하다? 독성·알레르기 조심해야</a><br>
+           <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BBMbR1M.img?h=508&w=840&m=6&q=60&o=f&l=f" style="width:128px;height:128px;" alt=""><br>
+           <a href="https://post.naver.com/viewer/postView.nhn?volumeNo=16524109&memberNo=8885713&mainMenu=HEALTH" >툭 하면 생기는 입병... 스테로이드 든 연고·패치 약은 일주일 이상 쓰면 안돼요</a><br>
+           <img src="https://post-phinf.pstatic.net/MjAxODA4MTdfMTg0/MDAxNTM0NDk1NTI1NTQ4.my-vPXPhLWxzx85IzmIjxI7S2TE9ZG0097D6_iQMpo4g.wlPsC5e70uTd3focEldr1PTgcKSWUWqcSWKkPvS2R24g.JPEG/pillstory044_titlebanner.jpg?type=w1200" style="width:128px;height:128px;" alt=""><br>
+           <a href="https://post.naver.com/viewer/postView.nhn?volumeNo=16456134&memberNo=19457070&mainMenu=HEALTH" >‘운동 중독’...꾸준한 운동과 어떻게 다를까?</a><br>
+           <img src="https://post-phinf.pstatic.net/MjAxODA3MTlfMjQ2/MDAxNTMxOTgzMDA1NjYz.72o4XlsahaZKe2FiSAGtR5jG1eh4XQMI37NarfCzpt8g.RPi_8xueYBmBrISpixTNV-xzupePXiDDcqTyWZfODjEg.JPEG/%EC%9A%B4%EB%8F%99%EC%A4%91%EB%8F%85%EC%8D%B8%EB%84%A4%EC%9D%BC.jpg?type=w1200" style="width:128px;height:128px;" alt=""><br>
+           <a href="https://audioclip.naver.com/channels/261/clips/86" >당뇨인들은 식초를 언제, 어떻게 먹는게 좋을까?</a><br>
+           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1z_mvWxKFDEVoDEgw4CEnOnGd4Wb_FwN60cBjX6J8cLdDj4Gn" style="width:128px;height:128px;" alt=""><br>
+           <a href="https://post.naver.com/viewer/postView.nhn?volumeNo=12124333&memberNo=37435392&mainMenu=HEALTH" >코골이 수술 무섭죠? 수술 필요한 경우와 개선 방법</a><br>
+           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDnfGE0tGK0GQKIxBpd7fEET_j0S73_HQoCVrWZTleS7v6_u6m" style="width:128px;height:128px;" alt=""><br>
+        <br><br><br><br>
+        <div class="fbar">
+        <a href="http://tinypic.com?ref=ndvdzk" target="_blank"><img src="http://i65.tinypic.com/ndvdzk.jpg" alt="/" width="50" height="50"></a>
+        <p>Copyright 2015. like_lion_wonkwang All rights reserved.</p>
+        </div>
+          
+        </div>
+      </section>
+    <script>
+    
+    var test1 = <%= current_user.mypages.last.me_h %>;
+    var test2 = <%= current_user.mypages.last.me_m %>;
+    
+    
+    function printTime() {
+      var clock = document.getElementById("clock"); // 출력할 장소 선택
+    	var hour = <%= current_user.mypages.last.me_h %>;
+    	var minutes = <%= current_user.mypages.last.me_m %>;
+ 
+    
+    	var old = new Date(2018, 7 ,30, hour, minutes,00,00);		//여기에 값이 들어가야 남은시간이 계산이되는데 안들어갔어						//지정해둔 시간
+    	var old_h = old.getHours();
+    	var old_m = old.getMinutes();
+    	var old_s = old.getSeconds();
+    	var old_sum = old_s + ( old_m * 60) + (old_h * 60 * 60 );   //지정해둔 시간을 초 단위로 변환.
+    	
+      // console.log(old, old_h, old_m, old_s, old_sum);
+        
+      var now = new Date();                                                  // 현재시간
+      var now_h = now.getHours();
+    	var now_m = now.getMinutes();
+    	var now_s = now.getSeconds();
+    	var now_sum = now_s + ( now_m * 60) + (now_h * 60 * 60 );   //지정해둔 시간을 초 단위로 변환.
+        
+    	var test = 1;
+    	
+    
+    	if(old_sum - now_sum > 0 ){
+    		var newtime = (old_sum - now_sum)
+    		var newtime_h = parseInt(newtime / 3600);
+    		newtime = newtime % 3600;
+    		var newtime_m =  parseInt(newtime / 60);
+    		newtime = newtime % 60;
+    	} else {
+    		var newtime = parseInt( 86400 - (  (old_sum - now_sum) * -1 ));
+    		var newtime_h =  parseInt(newtime / 3600);
+    		newtime = newtime % 3600;
+    		var newtime_m =  parseInt(newtime / 60);
+    		newtime = newtime % 60;
+    	}
+    	
+    
+      var nowTime =  newtime_h + "   시" +  newtime_m + "   분" + newtime  + "  초";
+        
+    	document.getElementById('clock').innerHTML = nowTime;           // 남은 약 복용 시간을 출력
+    	// title_real.innerHTML = old_h;
+    	// content_real.innerHTML = old_m;
+    }
+    
+    function start_count() {
+	    setInterval(printTime, 1000);   //1초 마다 실행
+    }
+    
+    start_count();    
+    
+  
+    imgURL.innerHTML = imgURL1;
+    
+    </script>    
+
+    </div>
+    <% else %>
+    <% end %>
+    
+ 
+ 
